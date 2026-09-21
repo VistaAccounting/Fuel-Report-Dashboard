@@ -114,7 +114,7 @@
   <!-- ============ SC FLEET ============ -->
   <section class="panel active" id="panel-sc">
     <div class="section-label">SC Fleet Fuel Card — by driver</div>
-    <div class="section-desc">On-road vehicles fueled via SC fuel card. MPG is the average of per-fill readings for July; EQ# matched against Equipment Inventory (owned Z10-series) and Rental Equipment Summary (active rentals as of 7/31/26).</div>
+    <div class="section-desc">On-road vehicles fueled via SC fuel card. MPG is the average of per-fill readings for August; EQ# matched against Equipment Inventory (owned Z10-series) and Rental Equipment Summary (active rentals as of 8/31/26).</div>
 
     <div class="rank-grid" id="rankSCGal"></div>
     <div class="caveat">YTD MPG draws on all fuel-card fills on file since the start of the tracking period — a sturdier number than a single month alone. Large gaps between a driver's YTD and monthly MPG are called out automatically on the Findings tab.</div>
@@ -126,22 +126,22 @@
         <th data-key="eq">EQ #</th>
         <th data-key="asset_type">Asset Type</th>
         <th data-key="fuel">Fuel Type</th>
-        <th data-key="gal" class="num">Jul Gallons</th>
-        <th data-key="cost" class="num">Jul Cost</th>
+        <th data-key="gal" class="num">Aug Gallons</th>
+        <th data-key="cost" class="num">Aug Cost</th>
         <th data-key="ytd_mpg" class="num">YTD MPG</th>
-        <th data-key="avg_mpg" class="num">Jul MPG</th>
-        <th data-key="fills" class="num">Jul Fills</th>
+        <th data-key="avg_mpg" class="num">Aug MPG</th>
+        <th data-key="fills" class="num">Aug Fills</th>
       </tr></thead>
       <tbody id="body-sc"></tbody>
     </table>
-    <div class="summary-note" style="margin-top:.5rem;">YTD MPG is the average across all SC fuel card transactions on file (Feb 19 – Jul 31, 2026); Jul MPG is July only. Table is sorted by YTD MPG first, then July MPG as a tiebreaker — click any column header to re-sort.</div>
+    <div class="summary-note" style="margin-top:.5rem;">YTD MPG is the average across all SC fuel card transactions on file (Aug 1 – 8/31/26); Aug MPG is August only. Table is sorted by YTD MPG first, then Aug MPG as a tiebreaker — click any column header to re-sort.</div>
     <div class="summary-note" id="scMatchSummary"></div>
   </section>
 
   <!-- ============ VISTA DIGITAL ============ -->
   <section class="panel" id="panel-digital">
     <div class="section-label">Vista Field Equipment — B.Smart digital dispenses</div>
-    <div class="section-desc">Fuel dispensed through the B.Smart pump/kiosk at Vista Vineyards, July 2026. Includes bulk diesel tank refills (Z11-01/Z11-02) and foreman gas-can draws, later hand-distributed to tractors recorded on paper logs.</div>
+    <div class="section-desc">Fuel dispensed through the B.Smart pump/kiosk at Vista Vineyards, August 2026. Includes bulk diesel tank refills (Z11-01/Z11-02) and foreman gas-can draws, later hand-distributed to tractors recorded on paper logs.</div>
     <div class="caveat">B.Smart dispenses carry no hours/mileage reading, so a true efficiency figure is not available here — ranked by total volume instead.</div>
 
     <div class="rank-grid" id="rankDigital"></div>
@@ -161,15 +161,15 @@
 
   <!-- ============ VISTA PAPER LOGS ============ -->
   <section class="panel" id="panel-paper">
-    <div class="section-label">Tractor &amp; sprayer fleet — July engine hours logged</div>
-    <div class="section-desc">From handwritten fuel logs, cross-matched against Equipment Inventory and Rental Equipment Summary. Hours are the span between each unit's first and last hour-meter reading in July — directional, not a full-month reading.</div>
+    <div class="section-label">Tractor &amp; sprayer fleet — August engine hours logged</div>
+    <div class="section-desc">From handwritten fuel logs, cross-matched against Equipment Inventory and Rental Equipment Summary. Hours are the span between each unit's first and last hour-meter reading in August — directional, not a full-month reading.</div>
 
     <div class="legend">
       <span><span class="leg-dot" style="background:#2563a8;"></span>Hours logged (left axis)</span>
       <span><span class="leg-dot" style="background:#e8a020;"></span>Gallons dispensed (right axis)</span>
     </div>
     <div class="chart-wrap" style="height:300px;">
-      <canvas id="fleetChart" role="img" aria-label="Grouped bar chart of July hours logged and gallons dispensed for 10 tractor and sprayer units."></canvas>
+      <canvas id="fleetChart" role="img" aria-label="Grouped bar chart of August hours logged and gallons dispensed for 10 tractor and sprayer units."></canvas>
     </div>
 
     <div class="metric-grid" id="fleetTotals"></div>
@@ -220,7 +220,7 @@
   <!-- ============ ENGINE HOURS ============ -->
   <section class="panel" id="panel-hours">
     <div class="section-label">Engine hours reference — John Deere Portal</div>
-    <div class="section-desc">Last known engine hours as of 7/31/26. These are lifetime/telematics readings, not July-only — a clean July gal/hour figure isn't available from this export alone (no start-of-month baseline).</div>
+    <div class="section-desc">Last known engine hours as of 8/31/26. These are lifetime/telematics readings, not Aug-only — a clean Aug gal/hour figure isn't available from this export alone (no start-of-month baseline).</div>
 
     <table class="rec" id="tbl-hours">
       <thead><tr>
@@ -240,7 +240,7 @@
     <div id="findingsList"></div>
   </section>
 
-  <footer class="foot">Vista Vineyards — Fuel Usage Report — generated from SC Fuel Portal, John Deere Portal, B.Smart, Equipment Inventory &amp; Rental Equipment Summary (as of 7/31/26), plus handwritten field logs (scanned 8/11/26).</footer>
+  <footer class="foot">Vista Vineyards — Fuel Usage Report — generated from SC Fuel Portal, John Deere Portal, B.Smart, Equipment Inventory &amp; Rental Equipment Summary (as of 8/31/26), plus handwritten field logs.</footer>
 
 </div><!-- .page -->
 
@@ -299,7 +299,7 @@ function shortFuelName(p){
 }
 
 // Renders one line per fuel type in `breakdown`, applying `valueFn` to each
-// item — used so Jul Gallons/Cost/MPG/Fills all break out by fuel type in
+// item — used so the monthly Gallons/Cost/MPG/Fills columns all break out by fuel type in
 // lockstep with the Fuel Type column, instead of showing one aggregate
 // number next to a multi-line fuel type list.
 function perFuelLines(breakdown, valueFn, singleValue){
@@ -326,7 +326,7 @@ function rankList(items, valueKey, subKey, unit, goodClass, decimals){
   const julGal = DATA.top5.sc_jul_gal.map(r=>({...r, __name:r.Driver.split(' - ')[0].split(' ').slice(0,2).join(' '), __sub:r.fills+' fills'}));
   const ytdGal = DATA.top5.sc_ytd_gal.map(r=>({...r, __name:r.Driver.split(' - ')[0].split(' ').slice(0,2).join(' '), __sub:r.ytd_fills+' fills'}));
   document.getElementById('rankSCGal').innerHTML = `
-    <div class="rank-card bad"><h3>Top 5 Most Gallons — July</h3><ul class="rank-list">${rankList(julGal,'gal','__sub',' gal','bad',0)}</ul></div>
+    <div class="rank-card bad"><h3>Top 5 Most Gallons — Aug</h3><ul class="rank-list">${rankList(julGal,'gal','__sub',' gal','bad',0)}</ul></div>
     <div class="rank-card bad"><h3>Top 5 Most Gallons — YTD</h3><ul class="rank-list">${rankList(ytdGal,'ytd_gal','__sub',' gal','bad',0)}</ul></div>
   `;
 })();
